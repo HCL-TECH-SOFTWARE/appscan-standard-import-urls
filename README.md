@@ -29,5 +29,12 @@ After configuring the extension and clicking *Import*, it will convert the list 
 ## Building
 
 In order to build this extension, you must have AppScan Standard and 7-zip installed. If they are not installed in the default location, you must edit their locations in `ImportUrls.csproj` or `pack.ps1`.
+If you have troubles excuting the `pack.ps1` file tou'll need to do the following:
+Open PowerShell as an administrator. Right-click the PowerShell icon and choose "Run as administrator."
+
+Execute the following command:
+Set-ExecutionPolicy RemoteSigned
+You can replace "RemoteSigned" with "Unrestricted" if you want to allow all scripts to run, but that may have security implications.
+Confirm the change by typing "Y" and pressing Enter.
 
 Building the solution should automatically generate the file `ImportUrls.zip`.
