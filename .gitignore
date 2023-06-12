@@ -32,3 +32,4 @@ _ReSharper*/
 packages/
 Properties/AssemblyInfo.cs
 /output
+/AppScanImportUrls/Output

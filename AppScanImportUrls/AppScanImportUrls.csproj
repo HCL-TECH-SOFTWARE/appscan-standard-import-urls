@@ -5,7 +5,8 @@
     <AssemblyTitle>AppScanImportUrls</AssemblyTitle>
     <Product>AppScanImportUrls</Product>
     <Copyright>Copyright ©  2023</Copyright>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>Output/</OutputPath>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
