@@ -2,17 +2,17 @@
 
 This library is an extension for HCL AppScan Standard.
 
-It allows the user to import a text file containing a list of URLs into AppScan. AppScan will explore these URLs as if they were explored manually.
+It enables you to import into AppScan a text file containing a list of URLs. AppScan will explore these URLs as if you explored them manually yourself.
 
 ## Installation
 
-To install, the extension must be imported into AppScan Standard using the AppScan extension manager.
+To install, the extension must be imported into AppScan Standard using the AppScan Extension Manager.
 
-1. Open the extension manager: Tools > Extensions > Extension Manager
-1. Import the extension ImportUrls.zip using Add Extensions From > This Computer 
-1. Restart AppScan
-1. Open the extension manager.
-1. Click "trust" to trust the extension.
+1. In AppScan Standard, go to Tools > Extensions > Extension Manager
+1. Import the extension ImportUrls.zip using Add Extensions From: > This Computer 
+1. Restart AppScan Standard for the change to take effect.
+1. Open Extension Manager.
+1. Click "Trust" to trust the extension.
 
 ## Usage
 
@@ -20,23 +20,23 @@ Once installed, you can access the extension using Tools > Extensions > Import U
 
 Configuration:
 
-- **Input File**: The actual file to import. Must be a text file with a URL in each line.
-- **Base URL**: If configured, this will be used as the base URL for any relative URLs in the file.
+- **Input File**: The file you want to import. Must be a text file with one URL or relative path per line.
+- **Base URL**: If the list includes relative paths, add here the base URL for these paths.
 - **Use session cookies**: If set, the extension will add session cookies from the scan configuration to each request. If there are no session cookies configured, this checkbox is disabled.
 
-After configuring the extension and clicking *Import*, it will convert the list of URLs into a temporary EXD (EXplore Data) file and import it into AppScan.
+After configuring the extension, click *Import* to convert the list of URLs into a temporary EXD (EXplore Data) file and import it into AppScan. AppScan will then explore these URLs automatically. You can then decide whether to continue with a Test stage or more manual exploring.
 
 ## Building
 
-In order to build this extension, you must have AppScan Standard and 7-zip installed. If they are not installed in the default location, you must edit their locations in `ImportUrls.csproj` or `pack.ps1`.
+In order to build this extension, you must have AppScan Standard and 7-zip installed. If they are not installed in their default locations, you must edit their locations in `ImportUrls.csproj` or `pack.ps1`.
 
 
-If you have troubles excuting the `pack.ps1` file tou'll need to do the following:
-Open PowerShell as an administrator. Right-click the PowerShell icon and choose "Run as administrator."
+If you have trouble executing the `pack.ps1` file do the following:
+1. Open PowerShell as an administrator. 
+1. Right-click the PowerShell icon and choose "Run as administrator."
+1. Execute the following command:
+	Set-ExecutionPolicy RemoteSigned
+Note: You can replace "RemoteSigned" with "Unrestricted" if you want to allow all scripts to run, but this may have security implications.
+1. Confirm the change by typing "Y" and clicking Enter.
 
-Execute the following command:
-Set-ExecutionPolicy RemoteSigned
-You can replace "RemoteSigned" with "Unrestricted" if you want to allow all scripts to run, but that may have security implications.
-Confirm the change by typing "Y" and pressing Enter.
-
-Building the solution should automatically generate the file `ImportUrls.zip`.
+The file `ImportUrls.zip` is automatically generated in the sub folder: \appscan-standard-import-urls\AppScanImportUrls\Output
