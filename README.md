@@ -35,8 +35,10 @@ If you have trouble executing the `pack.ps1` file do the following:
 1. Open PowerShell as an administrator. 
 1. Right-click the PowerShell icon and choose "Run as administrator."
 1. Execute the following command:
+	```PowerShell
 	Set-ExecutionPolicy RemoteSigned
-Note: You can replace "RemoteSigned" with "Unrestricted" if you want to allow all scripts to run, but this may have security implications.
+	```
+	Note: You can replace "RemoteSigned" with "Unrestricted" if you want to allow all scripts to run, but this may have security implications.
 1. Confirm the change by typing "Y" and clicking Enter.
 
 The file `ImportUrls.zip` is automatically generated in the sub folder: \appscan-standard-import-urls\AppScanImportUrls\Output
