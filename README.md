@@ -27,7 +27,6 @@ Configuration:
 After configuring the extension, click *Import* to convert the list of URLs into a temporary EXD (EXplore Data) file and import it into AppScan. AppScan will then explore these URLs automatically. You can then decide whether to continue with a Test stage or more manual exploring.
 
 ## Building
-
 In order to build this extension, you must have AppScan Standard and 7-zip installed. If they are not installed in their default locations, you must edit their locations in `ImportUrls.csproj`.
 
 The file `ImportUrls.zip` is automatically generated in the sub folder: \appscan-standard-import-urls\AppScanImportUrls\Output
