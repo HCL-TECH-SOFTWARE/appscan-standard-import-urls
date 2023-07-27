@@ -3,7 +3,8 @@
     <ProjectGuid>7975cf4f-cde5-4754-bd1e-e2f1834290bd</ProjectGuid>
     <TargetFramework>net472</TargetFramework>
     <AssemblyTitle>AppScanImportUrls</AssemblyTitle>
-    <Product>AppScanImportUrls</Product>
+    <AssemblyName>AppScanImportUrls</AssemblyName>
+	  <Product>AppScanImportUrls</Product>
     <Copyright>Copyright ©  2023</Copyright>
     <OutputPath>Output/</OutputPath>
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -30,7 +31,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="powershell -File pack.ps1 $(TargetDir)" />
-  </Target>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<PropertyGroup>
+			<TargetDir>$(TargetDir)$(TargetName)</TargetDir>
+		</PropertyGroup>
+		<Exec Command="rd /s /q &quot;$(TargetDir)&quot;&#xD;&#xA;mkdir &quot;$(TargetDir)&quot;&#xD;&#xA;&#xD;&#xA;copy &quot;$(OutputPath)\AppScanImportUrls.dll&quot; &quot;$(TargetDir)\&quot;&#xD;&#xA;copy &quot;$(OutputPath)\info.xml&quot; &quot;$(TargetDir)\&quot;&#xD;&#xA;&#xD;&#xA;del &quot;$(OutputPath)\$(TargetName).zip&quot;&#xD;&#xA;&#xD;&#xA;echo &quot;Note: to build this project, you need to have 7-zip installed (http://www.7-zip.org/)&quot;&#xD;&#xA;&quot;C:\Program Files\7-Zip\7z.exe&quot; a -tzip &quot;$(OutputPath)\$(TargetName).zip&quot; -r &quot;$(TargetDir)&quot;&#xD;&#xA;" />
+	</Target>
+
 </Project>
