@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using AppScan;
+using AppScan.Configuration;
 using AppScan.Extensions;
 using AppScan.Scan.Events;
 
@@ -26,7 +28,6 @@ namespace AppScanImportUrls
         {
             _appScan = appScan;
             _appScanGui = appScanGui;
-
             _menuItem = new MenuItem<EventArgs>("Import URLs from file", ImportUrlsDialog);
             _appScanGui.ExtensionsMenu.Add(_menuItem);
 
@@ -48,17 +49,28 @@ namespace AppScanImportUrls
         /// <param name="args"></param>
         private void ImportUrlsDialog(EventArgs args)
         {
+            string file = "";
             using (var form = new ImportUrlsForm())
             {
                 form.chkUseCookies.Enabled = _appScan.Scan.ScanData.Config.SessionManagement.DetectedCookies.Any();
 
                 var result = form.ShowDialog();
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(form.txtFilename.Text))
+                file = form.txtFilename.Text;
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(file))
                 {
                     Uri baseUri = String.IsNullOrWhiteSpace(form.txtBaseUrl.Text) ?
                         null : 
                         new Uri(form.txtBaseUrl.Text.Trim());
-                    ImportUrlsFromFile(form.txtFilename.Text, baseUri, form.chkUseCookies.Checked);
+                    ImportUrlsFromFile(file, baseUri, form.chkUseCookies.Checked);
+                }
+            }
+
+            using (var domainsForm=new DomainsViewForm(file))
+            {
+                var result = domainsForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    AddDomains(domainsForm.SelectedDomains);
                 }
             }
 
@@ -96,13 +108,21 @@ namespace AppScanImportUrls
 
                 // Load from memory to AppScan
                 _appScan.Scan.RequestRecorder.ImportRecordedRequests(stream, false);
-                _appScan.Scan.RequestRecorder.Analyse();
-                _appScanGui.RefreshMainFormGui();
-
             }
         }
-
-
+        /// <summary>
+        /// adds the list of domains into AppScan additional servers
+        /// </summary>
+        /// <param name="domainsList">the list of domains to be added</param>
+        public void AddDomains(List<string> domainsList)
+        {
+            foreach (var domain in domainsList)
+            {
+                _appScan.Scan.ScanData.Config.AdditionalServers.Add(domain);
+            }
+            _appScan.Scan.RequestRecorder.Analyse();
+            _appScanGui.RefreshMainFormGui();
+        }
 
         public ExtensionVersionInfo GetUpdateData(Edition edition, Version targetAppVersion)
         {
