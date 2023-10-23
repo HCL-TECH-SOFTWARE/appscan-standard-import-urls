@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppScanImportUrls
 {
     public partial class ImportUrlsForm : Form
     {
+        public static string baseUrl = "";
         public ImportUrlsForm()
         {
             InitializeComponent();
@@ -57,6 +51,7 @@ namespace AppScanImportUrls
 
         private bool CheckBaseUrl(string baseUri)
         {
+            baseUrl=baseUri;
             if (String.IsNullOrWhiteSpace(baseUri))
             {
                 return true;

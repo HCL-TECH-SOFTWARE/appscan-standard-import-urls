@@ -18,8 +18,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AppScanSDK">
-      <HintPath>C:\Program Files (x86)\HCL\AppScan Standard\AppScanSDK.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\Program Files (x86)\HCL\AppScan Standard\AppScanSDK.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -35,7 +34,7 @@
 		<PropertyGroup>
 			<TargetDir>$(TargetDir)$(TargetName)</TargetDir>
 		</PropertyGroup>
-		<Exec Command="rd /s /q &quot;$(TargetDir)&quot;&#xD;&#xA;mkdir &quot;$(TargetDir)&quot;&#xD;&#xA;&#xD;&#xA;copy &quot;$(OutputPath)\AppScanImportUrls.dll&quot; &quot;$(TargetDir)\&quot;&#xD;&#xA;copy &quot;$(OutputPath)\info.xml&quot; &quot;$(TargetDir)\&quot;&#xD;&#xA;&#xD;&#xA;del &quot;$(OutputPath)\$(TargetName).zip&quot;&#xD;&#xA;&#xD;&#xA;echo &quot;Note: to build this project, you need to have 7-zip installed (http://www.7-zip.org/)&quot;&#xD;&#xA;&quot;C:\Program Files\7-Zip\7z.exe&quot; a -tzip &quot;$(OutputPath)\$(TargetName).zip&quot; -r &quot;$(TargetDir)&quot;&#xD;&#xA;" />
+		<Exec Command="rd /s /q &quot;$(TargetDir)&quot;&#xD;&#xA;mkdir &quot;$(TargetDir)&quot;&#xD;&#xA;&#xD;&#xA;copy &quot;$(OutputPath)\AppScanImportUrls.dll&quot; &quot;$(TargetDir)\&quot;&#xD;&#xA;copy &quot;$(OutputPath)\info.xml&quot; &quot;$(TargetDir)\&quot;&#xD;&#xA;&#xD;&#xA;&quot;$(OutputPath)\ExtensionSigner.exe&quot; -s &quot;C:\appscan-standard-import-urls\AppScanImportUrls\Output\AppScanImportUrls&quot;&#xD;&#xA;&#xD;&#xA;del &quot;$(OutputPath)\$(TargetName).zip&quot;&#xD;&#xA;&#xD;&#xA;echo &quot;Note: to build this project, you need to have 7-zip installed (http://www.7-zip.org/)&quot;&#xD;&#xA;&quot;C:\Program Files\7-Zip\7z.exe&quot; a -tzip &quot;$(OutputPath)\$(TargetName).zip&quot; -r &quot;$(TargetDir)&quot;&#xD;&#xA;" />
 	</Target>
 
 </Project>
