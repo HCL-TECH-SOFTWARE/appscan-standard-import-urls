@@ -18,6 +18,7 @@ namespace AppScanImportUrls
             if (!File.Exists(filename))
             {
                 MessageBox.Show("File not found: " + filename);
+                return;
             }
             foreach (var line in File.ReadLines(filename))
             {
