@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.DomainsListBox = new System.Windows.Forms.ListBox();
+            this.okButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -43,35 +43,35 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Select Domains";
             // 
-            // listBox1
+            // DomainsListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(63, 100);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(574, 340);
-            this.listBox1.TabIndex = 1;
+            this.DomainsListBox.FormattingEnabled = true;
+            this.DomainsListBox.HorizontalScrollbar = true;
+            this.DomainsListBox.ItemHeight = 16;
+            this.DomainsListBox.Location = new System.Drawing.Point(63, 100);
+            this.DomainsListBox.Name = "DomainsListBox";
+            this.DomainsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.DomainsListBox.Size = new System.Drawing.Size(574, 340);
+            this.DomainsListBox.TabIndex = 1;
             // 
-            // button1
+            // okButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(370, 458);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 49);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.okButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.okButton.Location = new System.Drawing.Point(370, 458);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(87, 49);
+            this.okButton.TabIndex = 2;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // DomainsViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(839, 519);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.DomainsListBox);
             this.Controls.Add(this.label1);
             this.Name = "DomainsViewForm";
             this.Text = "DomainsViewForm";
@@ -84,7 +84,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox DomainsListBox;
+        private System.Windows.Forms.Button okButton;
     }
 }
