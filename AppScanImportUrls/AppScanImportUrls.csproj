@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>7975cf4f-cde5-4754-bd1e-e2f1834290bd</ProjectGuid>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFrameworks>net472;net6.0-windows</TargetFrameworks>
     <AssemblyTitle>AppScanImportUrls</AssemblyTitle>
     <AssemblyName>AppScanImportUrls</AssemblyName>
 	  <Product>AppScanImportUrls</Product>
     <Copyright>Copyright ©  2023</Copyright>
     <OutputPath>Output/</OutputPath>
-	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -18,7 +18,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AppScanSDK">
-      <HintPath>..\..\Program Files (x86)\HCL\AppScan Standard\AppScanSDK.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files (x86)\HCL\AppScan Standard\AppScanSDK.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
